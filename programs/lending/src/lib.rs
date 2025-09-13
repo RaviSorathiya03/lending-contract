@@ -6,7 +6,7 @@ declare_id!("GJwhyVddz4g84PnpRETVuuMZiEd8LvQnPoX4SCXEQEkY");
 
 #[program]
 pub mod lending {
-    use crate::instructions::{process_init_bank, process_init_user};
+    use crate::instructions::{process_deposit, process_init_bank, process_init_user};
 
     use super::*;
 
@@ -23,6 +23,13 @@ pub mod lending {
         usdc_address: Pubkey
     ) -> Result<()>{
         process_init_user(ctx, usdc_address)
+    }
+
+    pub fn deposite(
+        ctx: Context<Deposite>,
+        amount: u64
+    ) -> Result<()>{
+        process_deposit(ctx, amount)
     }
 }
 
